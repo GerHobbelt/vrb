@@ -341,8 +341,8 @@ if [[ -n "${warninline}" ]]; then
     pgm_warn=( "${pgm_warn[@]}" -Winline )
 fi
 
-lib_feat=( -fomit-frame-pointer -funsigned-char -funsigned-bitfields -frerun-loop-opt -finline -finline-functions )
-pgm_feat=( -fomit-frame-pointer -funsigned-char -funsigned-bitfields -frerun-loop-opt -finline -finline-functions )
+lib_feat=( -fomit-frame-pointer -funsigned-char -funsigned-bitfields -fgnu-linker -frerun-loop-opt -finline -finline-functions -fmove-all-movables )
+pgm_feat=( -fomit-frame-pointer -funsigned-char -funsigned-bitfields -fgnu-linker -frerun-loop-opt -finline -finline-functions -fmove-all-movables )
 
 lib_cp_opt=( -pipe )
 pgm_cp_opt=( -pipe )
@@ -377,7 +377,7 @@ if [[ -n "${as_verbose}" ]]; then
     pgm_as_opt=( -v "${pgm_as_opt[@]}" )
 fi
 
-lib_ld_opt=( -pipe -shared )
+lib_ld_opt=( -pipe -shared -nostdlib -nostartfiles )
 pgm_ld_opt=( -pipe )
 if [[ -n "${ld_verbose}" ]]; then
     lib_ld_opt=( -v "${lib_ld_opt[@]}" )
